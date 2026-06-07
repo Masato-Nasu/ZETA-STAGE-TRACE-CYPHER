@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f6f6f3" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <title>ZETA STAGE TRACE CYPHER</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <h1>ZETA STAGE TRACE CYPHER</h1>
+      <span>v0.2.2</span>
+    </header>
+
+    <section class="layout" aria-label="ZETA STAGE TRACE CYPHER">
+      <article class="panel">
+        <h2>暗号化</h2>
+
+        <label class="field">
+          <span>文章</span>
+          <textarea id="messageInput" spellcheck="false" placeholder="ここに文章を入力"></textarea>
+        </label>
+
+        <label class="field">
+          <span>パスワード</span>
+          <div class="password-line">
+            <input id="encodePassword" type="password" autocomplete="new-password" />
+            <button id="showEncodePassword" type="button">表示</button>
+          </div>
+        </label>
+
+        <div class="actions">
+          <button id="encodeBtn" type="button" class="primary">PNG生成</button>
+          <button id="clearEncodeBtn" type="button">クリア</button>
+        </div>
+
+        <div class="field">
+          <span>PNGプレビュー</span>
+          <div class="canvas-wrap">
+            <canvas id="encodeCanvas" width="1" height="1" aria-label="生成されたPNGランダムウォーク"></canvas>
+          </div>
+          <p id="encodeInfo" class="meta-text">未生成</p>
+        </div>
+
+        <div class="actions wrap">
+          <button id="savePngBtn" type="button" disabled>PNG保存</button>
+        </div>
+      </article>
+
+      <article class="panel">
+        <h2>復号</h2>
+
+        <div class="field">
+          <span>PNG読み込み</span>
+          <div class="actions wrap file-row">
+            <label class="file-button" for="loadPngFile">PNGを選択</label>
+            <input id="loadPngFile" type="file" accept="image/png,image/jpeg,image/webp" />
+            <button id="clearDecodeBtn" type="button">クリア</button>
+          </div>
+          <div class="canvas-wrap small">
+            <canvas id="decodeCanvas" width="1" height="1" aria-label="読み込んだPNG"></canvas>
+          </div>
+          <p id="decodeInfo" class="meta-text">未読み込み</p>
+        </div>
+
+        <label class="field">
+          <span>パスワード</span>
+          <div class="password-line">
+            <input id="decodePassword" type="password" autocomplete="current-password" />
+            <button id="showDecodePassword" type="button">表示</button>
+          </div>
+        </label>
+
+        <div class="actions">
+          <button id="decodeBtn" type="button" class="primary">復号</button>
+        </div>
+
+        <label class="field">
+          <span>結果</span>
+          <textarea id="plainOutput" spellcheck="false" readonly></textarea>
+        </label>
+
+        <div class="actions wrap">
+          <button id="copyPlainBtn" type="button">コピー</button>
+        </div>
+      </article>
+    </section>
+    <p id="statusText" class="status" aria-live="polite">Ready</p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
